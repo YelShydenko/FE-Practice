@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: white;
+  padding: 20px 0;
+}
+
+.navbar .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #22262a;
+}
+
+.navbar__content {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.navbar__item {
+  color: #22262a;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar__item:hover {
+  text-decoration: underline;
+}
+
+.navbar__action {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.categories {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  gap: 12px 24px;
+  height: 100%;
+}
+
+.categories .item:nth-child(1) {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+.categories .item:nth-child(2) {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 3;
+  grid-column-end: 2;
+}
+.categories .item:nth-child(3) {
+  grid-row-start: 2;
+  grid-column-start: 2;
+
+  grid-row-end: 3;
+  grid-column-end: 3;
+}
+.categories .item:nth-child(4) {
+  grid-row-start: 1;
+  grid-column-start: 3;
+
+  grid-row-end: 3;
+  grid-column-end: 5;
+}
+
+.categories .item {
+  position: relative;
+  overflow: hidden;
+}
+
+.categories .item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.categories .item__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  background-color: #00000050;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.categories .item:hover .item__overlay {
+  backdrop-filter: blur(2px);
+  top: 0;
+}
+
+.btn {
+  padding: 12px 24px;
+  background-color: white;
+  border: none;
+}
+
+.btn-blur {
+  background-color: #ffffff20;
+  color: white;
+  backdrop-filter: blur(2px);
+}
+
+.fashion{
+  margin-top: 50px;
+}
+
+.fashion__category{
+  font-size: 20px;
+  text-align: center;
+}
+
+.desc{
+  font-size: 15px;
+  text-align: center;
+}
+
+.items{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin: 24px 0;
+}
+
+.brand{
+  margin-top: 38px;
+}
+
+.price{
+  display: flex;
+  max-width: 149px;
+  justify-content: space-between;
+}
+
+.before__sale{
+  text-decoration: line-through;
+}
+
+.after__sale{
+  color: red;
+}
+
+.more{
+  display: block;
+  margin: 0 auto;
+  padding: 12px 60px;
+  font-size: 15px;
+  color: rgba(34, 38, 42, 1);
+  border: 1px solid rgba(34, 38, 42, 1);
+  background: none;
+}

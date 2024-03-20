@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop | Главная</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- nav.nav>.content>a.logo{Logo}+ul.navbar>li*2>a.navbar__item{Link $} -->
+    <nav class="nav">
+      <div class="content">
+        <a href="index.html" class="logo">Market</a>
+        <ul class="navbar">
+          <li>
+            <a href="index.html" class="navbar__item navbar__item-active"
+              >Главная</a
+            >
+          </li>
+          <li><a href="cart.html" class="navbar__item">Корзина</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="search">
+        <input type="text" class="search__input" />
+      </div>
+      <div class="products"></div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>

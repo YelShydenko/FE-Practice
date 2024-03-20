@@ -1,0 +1,57 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+/* .notification::after{
+   content: "This is after";
+}
+
+.notification::before{
+   content: "This is before";
+} */
+
+/* .notification::after{
+   content: "";
+   position: absolute;
+   width: 100px;
+   height: 100px;
+   background-color: blue;
+   border-radius: 50%;
+
+} */
+
+/* .ul-1 li:nth-child(even) {
+   background-color: aqua;
+}
+.ul-1 li:nth-child(odd) {
+   background-color: burlywood;
+} */
+
+.container{
+   max-width: 980px;
+   margin: 0 auto;
+}
+
+.post__title{
+   text-align: center;
+}
+
+.post__desc{
+   text-align: center;
+}
+
+.post__content{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+}
+
+.post__content .item{
+   max-width: 230px;
+}
+
+.post__content .item img{
+   width: 100%;
+}
