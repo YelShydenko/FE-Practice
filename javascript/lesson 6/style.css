@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: darkslateblue;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 50px auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search {
+  padding: 12px 25px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.contacts {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+.contact__card {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 30px 100px;
+  width: 700px;
+}
+
+.img__container {
+  /* background-color: grey; */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
