@@ -1,0 +1,139 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.navbar {
+  display: flex;
+  background-color: black;
+}
+.navbar__item {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #fff;
+}
+.navbar__item:hover {
+  background-color: #fff;
+  color: #000;
+}
+.navbar__item-active {
+  background-color: #ddd;
+  color: #000;
+}
+
+.post {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 400px 400px;
+}
+.post .item {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.post .item__action {
+  align-self: flex-end;
+}
+.post .item:first-child {
+  background-color: orange;
+}
+.post .item:first-child h2 {
+  font-size: 24px;
+  font-style: italic;
+  color: blue;
+  text-align: center;
+}
+.post .item:last-child {
+  background-color: green;
+}
+.post .item:last-child h2 {
+  font-weight: 400;
+  font-size: 20px;
+  font-style: normal;
+  color: red;
+  text-align: center;
+}
+
+.btn-update, .btn-remove {
+  color: #fff;
+  border-radius: 4px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 12px;
+}
+.btn-remove {
+  background-color: rgb(226, 77, 77);
+}
+.btn-update {
+  background-color: rgb(89, 0, 255);
+}
+.btn-large {
+  padding: 12px 16px;
+  font-size: 18px;
+}
+
+.fs-12 {
+  font-size: 14px;
+}
+.fs-16 {
+  font-size: 16px !important;
+}
+.fs-18 {
+  font-size: 18px;
+}
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-12 {
+  font-size: 12px !important;
+}
+.fs-13 {
+  font-size: 13px !important;
+}
+.fs-14 {
+  font-size: 14px !important;
+}
+.fs-15 {
+  font-size: 15px !important;
+}
+.fs-16 {
+  font-size: 16px !important;
+}
+.fs-17 {
+  font-size: 17px !important;
+}
+.fs-18 {
+  font-size: 18px !important;
+}
+.fs-19 {
+  font-size: 19px !important;
+}
+.fs-20 {
+  font-size: 20px !important;
+}
+.fs-21 {
+  font-size: 21px !important;
+}
+.fs-22 {
+  font-size: 22px !important;
+}
+.fs-23 {
+  font-size: 23px !important;
+}
+.fs-24 {
+  font-size: 24px !important;
+}/*# sourceMappingURL=style.css.map */

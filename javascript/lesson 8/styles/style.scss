@@ -1,0 +1,145 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: sans-serif;
+}
+
+@mixin fontStyle($weight: false, $size, $style, $color, $align) {
+
+   @if $weight {
+      font-weight: $weight;
+   }
+
+   font-size: $size;
+   font-style: $style;
+   color: $color;
+   text-align: $align;
+}
+
+ul,
+ol {
+   list-style: none;
+}
+
+$navbar-bg-color: black;
+
+.navbar {
+   display: flex;
+   background-color: $navbar-bg-color;
+
+   &__item {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #fff;
+
+      &:hover {
+         background-color: #fff;
+         color: #000;
+      }
+
+      &-active {
+         background-color: #ddd;
+         color: #000;
+      }
+   }
+}
+
+.post {
+   max-width: 1240px;
+   margin: 0 auto;
+
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 400px 400px;
+
+   .item {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__action {
+         align-self: flex-end;
+      }
+
+      &:first-child {
+         background-color: orange;
+
+         h2 {
+            @include fontStyle(false, 24px, italic, blue, center);
+         }
+      }
+
+      &:last-child {
+         background-color: green;
+
+         h2 {
+            @include fontStyle(400, 20px, normal, red, center);
+         }
+      }
+   }
+}
+
+%btn-element {
+   color: #fff;
+   border-radius: 4px;
+}
+
+@mixin btn-element {
+   color: #fff;
+   border-radius: 4px;
+}
+
+
+.btn {
+   border: none;
+   padding: 8px 12px;
+
+   &-remove {
+      background-color: rgb(226, 77, 77);
+      @extend %btn-element;
+      // @include btn-element;
+   }
+
+   &-update {
+      background-color: rgb(89, 0, 255);
+      @extend %btn-element;
+      // @include btn-element;
+   }
+
+   &-large {
+      padding: 12px 16px;
+      font-size: 18px;
+   }
+}
+
+
+.fs {
+   $default: 12px;
+
+   &-12 {
+      font-size: $default + 2;
+   }
+
+   &-16 {
+      font-size: $default + 4 !important;
+   }
+
+   &-18 {
+      font-size: $default + 6;
+   }
+
+   &-20 {
+      font-size: $default + 8;
+   }
+}
+
+.fs {
+   @for $size from 12 through 24 {
+      &-#{$size} {
+         font-size: #{$size}px !important;
+      }
+   }
+}

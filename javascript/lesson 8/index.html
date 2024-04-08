@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <!-- nav>ul.navbar>li*4>a.navbar__item{Link $} -->
+    
+    <nav>
+      <ul class="navbar">
+        <li><a href="#" class="navbar__item navbar__item-active">Link 1</a></li>
+        <li><a href="#" class="navbar__item">Link 2</a></li>
+        <li><a href="#" class="navbar__item">Link 3</a></li>
+        <li><a href="#" class="navbar__item">Link 4</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- .container>.item.item-$*2>h2{Title $} -->
+      <div class="post">
+        <div class="item">
+          <h2>Title 1</h2>
+
+          <div class="item__action">
+            <button class="btn btn-remove">Remove</button>
+            <button class="btn btn-update">Update</button>
+          </div>
+        </div>
+        <div class="item">
+          <h2 class="fs-16">Title 2</h2>
+
+          <div class="item__action">
+            <button class="btn btn-remove">Remove</button>
+            <button class="btn btn-update">Update</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
