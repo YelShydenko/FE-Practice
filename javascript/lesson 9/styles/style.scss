@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: "Roboto Mono", monospace;
+}
+
+@mixin fontStyle($size: false, $color: false, $weight: false, $align: false) {
+   @if $size {
+      font-size: $size;
+   }
+
+   @if $color {
+      color: $color;
+   }
+
+   @if $weight {
+      font-weight: $weight;
+   }
+
+   @if $align {
+      text-align: $align;
+   }
+}
+
+@mixin flexContainer($direction: false, $gap: false) {
+   display: flex;
+
+   @if $direction {
+      flex-direction: $direction;
+   }
+
+   @if $gap {
+      gap: $gap;
+   }
+}
+
+$text-color: #17181A;
+
+$color-primary: #177DFF;
+$color-secondary: #5D6166;
+
+$input-bg-default: #F1F6F9;
+$input-bg-error: #FCEDED;
+$input-bg-focus: #F0F7FF;
+$input-place-default: #8B9199;
+
+$big-size: 22px;
+$large-size: $big-size - 2;
+$middle-size: $large-size - 2;
+$normal-size: $middle-size - 2;
+$small-size: $normal-size - 2;
+
+body {
+   background-color: #f2f2f2;
+   padding: 20px;
+}
+
+.page {
+   max-width: 576px;
+   margin: 0 auto;
+   padding: 12px 24px;
+   background-color: #fff;
+   min-height: calc(100vh - 40px);
+   border-radius: 12px;
+
+   &__header {
+      padding: 12px 0;
+   }
+
+   &__content {
+      padding: 12px 0;
+   }
+}
+
+.navbar {
+   background-color: #fff;
+
+   .logo {
+      @include fontStyle($big-size + 4, $color-primary, bold);
+      text-decoration: none;
+   }
+}
+
+.auth {
+   padding: 24px 0;
+
+   @include flexContainer(column, 32px);
+
+   &__header {
+      @include flexContainer(column, 16px);
+   }
+
+   &__title {
+      @include fontStyle($big-size + 6, $text-color, false, center);
+   }
+
+   &__subtitle {
+      @include fontStyle($normal-size, $color-secondary, false, center);
+   }
+}
+
+.form {
+   @include flexContainer(column, 16px);
+
+   &__item {
+      @include flexContainer(column, 8px);
+   }
+
+   &__label {
+      @include fontStyle($small-size - 2, $color-secondary);
+   }
+
+   &-input {
+      padding: 14px 16px;
+      border: none;
+      background-color: $input-bg-default;
+      border-radius: 12px;
+      outline: none;
+
+      &::placeholder {
+         @include fontStyle($small-size, $input-place-default);
+      }
+
+      &:focus {
+         background-color: $input-bg-focus;
+      }
+
+      &-error {
+         background-color: $input-bg-error;
+
+         &::placeholder {
+            color: $text-color;
+         }
+      }
+   }
+}
+
+.btn {
+   border: none;
+   padding: 16px 24px;
+
+   &-primary {
+      background-color: $color-primary;
+      color: #fff;
+   }
+
+   &-radius {
+      border-radius: 12px;
+   }
+}
