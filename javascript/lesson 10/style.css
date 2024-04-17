@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000080;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-active {
+  display: flex;
+}
+
+.modal h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bolder;
+}
