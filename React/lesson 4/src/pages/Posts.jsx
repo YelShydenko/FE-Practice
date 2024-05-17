@@ -1,42 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 const Posts = () => {
-  const [data, setData] = useState([
-    {
-      id: "1",
-      title: "Post 1",
-      body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit eligendi est sequi facere dignissimos nisi nesciunt libero earum nihil pariatur?",
-    },
-    {
-      id: "2",
-      title: "Post 2",
-      body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit eligendi est sequi facere dignissimos nisi nesciunt libero earum nihil pariatur?",
-    },
-    {
-      id: "3",
-      title: "Post 3",
-      body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit eligendi est sequi facere dignissimos nisi nesciunt libero earum nihil pariatur?",
-    },
-    {
-      id: "4",
-      title: "Post 4",
-      body: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit eligendi est sequi facere dignissimos nisi nesciunt libero earum nihil pariatur?",
-    },
-  ]);
-
+  const [data, setData] = useState([]);
+  const fetchPosts = async () => {
+    try {
+      let res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      let posts = await res.json();
+      setData(posts);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchPosts();
+  }, []);
   return (
-    <div>
-      <ul>
-        {data &&
-          data.map((item) => (
-            <li key={item.id}>
-              <Link to={item.id}>{item.title}</Link>
-            </li>
-          ))}
-      </ul>
+    <div className="posts">
+      {data &&
+        data.map((item) => (
+          <section key={item.id} className="item">
+            <img
+              src="./post-item.png"
+              alt={item.title}
+              className="item__image"
+            />
+            <Link to={`/posts/${item.id}`} className="item__title">
+              {item.title}
+            </Link>
+          </section>
+        ))}
     </div>
   );
 };
-
 export default Posts;

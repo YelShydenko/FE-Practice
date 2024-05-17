@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Posts from "./pages/Posts";
 import Layout from "./components/Layout";
+import Post from "./pages/Post";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/posts" element={<Posts />} />
-          <Route path="*" element={ <h1>Eroor 404 Not Found</h1> } />
+          <Route path="/posts/:postId" element={<Post />} />
+          <Route path="*" element={<h1>Eroor 404 Not Found</h1>} />
         </Route>
       </Routes>
     </>

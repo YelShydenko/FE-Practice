@@ -26,7 +26,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <main>
+      <main className="container">
         <Outlet />
       </main>
       <footer>This is footer</footer>
