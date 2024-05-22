@@ -1,0 +1,123 @@
+body {
+  background-color: #fdfdfd;
+}
+
+.sidebar {
+  max-width: 120px;
+  width: 100%;
+  background-color: #fff;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  .nav {
+    padding: 40px 15px;
+    ul {
+      list-style: none;
+    }
+
+    &__item {
+      display: block;
+      padding: 8px 16px;
+      a {
+        text-decoration: none;
+        color: rgba(180, 188, 207, 1);
+        font-size: 24px;
+        font-weight: 700;
+
+        &:hover {
+          color: rgba(255, 138, 0, 1);
+        }
+      }
+    }
+  }
+}
+
+main {
+  padding-left: 120px;
+}
+
+.container {
+  padding: 67px 35px;
+  width: 1085px;
+  margin: 0 auto;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      h2 {
+        color: rgba(180, 188, 207, 1);
+        font-size: 24px;
+        font-weight: 500;
+      }
+      p {
+        font-size: 28px;
+        font-weight: 700;
+      }
+    }
+    &__search {
+      .search__icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+      }
+      input {
+        background: rgba(180, 188, 207, 0.41);
+        border: none;
+        padding: 16px 30px 16px 66px;
+        border-radius: 15px;
+        position: relative;
+        top: -13px;
+        left: -18px;
+        width: 360px;
+      }
+    }
+  }
+
+  .banner {
+    margin-top: 26px;
+    background: rgba(47, 47, 47, 1);
+    border-radius: 40px;
+    color: #fff;
+    position: relative;
+    padding: 38px 58px;
+    overflow: hidden;
+    &__content {
+      width: 478px;
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      align-items: start;
+      h1 {
+        font-size: 45px;
+        font-weight: 700;
+        span {
+          color: rgba(255, 138, 0, 1);
+        }
+      }
+      p {
+        font-size: 16px;
+      }
+      button {
+        background-color: rgba(255, 138, 0, 1);
+        border: none;
+        border-radius: 15px;
+        padding: 13px 40px;
+        color: white;
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 625px;
+      height: 100%;
+    }
+  }
+}
