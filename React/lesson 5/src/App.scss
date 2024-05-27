@@ -80,7 +80,7 @@ main {
   }
 
   .banner {
-    margin-top: 26px;
+    margin: 26px 0 30px;
     background: rgba(47, 47, 47, 1);
     border-radius: 40px;
     color: #fff;
@@ -118,6 +118,66 @@ main {
       top: 0;
       left: 625px;
       height: 100%;
+    }
+  }
+
+  .tab {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    list-style: none;
+    &__item {
+      background-color: #fff;
+      border-radius: 20px;
+      font-size: 16px;
+      display: block;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      color: #111;
+      text-decoration: none;
+      padding: 8px 16px;
+      &-active {
+        background-color: #111;
+        color: #fff;
+      }
+    }
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px;
+      background-color: #fff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      border-radius: 15px;
+
+      img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        height: 200px;
+        border-radius: 15px;
+      }
+
+      h2 {
+        a {
+          text-decoration: none;
+          color: #111;
+          font-size: 16px;
+          font-weight: 600;
+        }
+      }
+
+      span {
+        font-size: 14px;
+        color: #2f2f2f;
+        font-weight: 500;
+      }
     }
   }
 }
