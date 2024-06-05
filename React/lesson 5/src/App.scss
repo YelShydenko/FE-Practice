@@ -228,3 +228,72 @@ main {
         }
     }
 }
+
+.product {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 40px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 15px;
+
+    &__image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 15px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        h1 {
+            color: #111;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #2F2F2F;
+            font-weight: 500;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        span {
+            font-size: 16px;
+            color: #2F2F2F;
+            font-weight: 500;
+        }
+
+        .btn {
+            align-self: flex-start;
+        }
+    }
+
+    &__count {
+        align-self: flex-start;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 5px;
+
+        button {
+            padding: 8px;
+            border: none;
+            border: 1px solid #111;
+            border-radius: 5px;
+        }
+
+        input{ 
+            padding: 8px;
+            border: none;
+            border: 1px solid #111;
+            border-radius: 5px;
+            max-width: 60px;
+        }
+    }
+}
+
