@@ -1,78 +1,74 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addProductToCart } from '../../store/features/product/productSlice';
 
-const Product = ({ addProductToCart }) => {
-  const { productId } = useParams();
+const Product = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  const [product, setProduct] = useState(null);
-  const [count, setCount] = useState(0);
+    const { productId } = useParams();
 
-  const fetchProduct = async () => {
-    try {
-      let res = await fetch("/products.json");
+    const [product, setProduct] = useState(null)
+    const [count, setCount] = useState(1);
 
-      let data = await res.json();
+    const fetchProduct = async () => {
+        try {
+            let res = await fetch("/products.json");
 
-      let filteredData = data.find((item) => item.id === productId);
+            let data = await res.json();
 
-      setProduct(filteredData);
-    } catch (err) {
-      console.log(err);
+            let filteredData = data.find(item => item.id === productId);
+
+            setProduct(filteredData);
+        } catch (err) {
+            console.log(err);
+        }
     }
-  };
 
-  useEffect(() => {
-    fetchProduct();
-  }, [productId]);
+    useEffect(() => {
+        fetchProduct();
+    }, [productId])
 
-  const incrementCount = () => {
-    setCount((prevState) => prevState + 1);
-  };
-
-  const decrementCount = () => {
-    if (count > 0) {
-      setCount((prevState) => prevState - 1);
+    const incrementCount = () => {
+        setCount(prevState => prevState + 1)
     }
-  };
 
-  const addToCart = (product) => {
-    addProductToCart({ ...product, count });
-  };
+    const decrementCount = () => {
+        if (count > 1) {
+            setCount(prevState => prevState - 1)
+        }
+    }
 
-  if (!product) return "Loading ...";
+    const addToCart = (product) => {
+        dispatch(addProductToCart({...product, count}))
+    }
 
-  return (
-    <div className="container">
-      <div className="product">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="product__image"
-        />
+    if (!product) return "Loading ..."
 
-        <div className="product__info">
-          <h1>{product.name}</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-            illo
-          </p>
-          <span>{product.price}$</span>
+    return (
+        <div className="container">
+            <button onClick={() => navigate(-1)}>Back</button>
+            <h2>Product</h2>
 
-          <div className="product__count">
-            <button onClick={decrementCount}>-</button>
-            <input type="text" value={count} disabled readOnly />
-            <button onClick={incrementCount}>+</button>
-          </div>
-          <button
-            className="btn btn-bgorange"
-            onClick={() => addToCart(product)}
-          >
-            ADD TO CART
-          </button>
+            <div className="product">
+                <img src={product.image} alt={product.name} className='product__image' />
+
+                <div className='product__info'>
+                    <h1>{product.name}</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, illo</p>
+                    <span>{product.price}$</span>
+
+                    <div className='product__count'>
+                        <button onClick={decrementCount}>-</button>
+                        <input type="text" value={count} disabled readOnly/>
+                        <button onClick={incrementCount}>+</button>
+                    </div>
+                    <button className='btn btn-bgorange' onClick={() => addToCart(product)}>ADD TO CART</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Product;
+export default Product

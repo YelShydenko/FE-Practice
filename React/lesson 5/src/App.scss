@@ -243,6 +243,8 @@ main {
         height: auto;
         display: block;
         border-radius: 15px;
+        max-height: 300px;
+        object-fit: cover;
     }
 
     &__info {
@@ -293,6 +295,7 @@ main {
             border: 1px solid #111;
             border-radius: 5px;
             max-width: 60px;
+            text-align: center;
         }
     }
 }
