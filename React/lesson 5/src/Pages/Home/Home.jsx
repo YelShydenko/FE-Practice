@@ -1,32 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { CiHome, CiSearch, CiShoppingBasket } from "react-icons/ci";
-import { NavLink, Outlet, Route, Routes } from 'react-router-dom';
-import Products from '../Products/Products';
+import {CiSearch } from "react-icons/ci";
+import { NavLink, Outlet} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from '@/store/features/product/productSlice';
 
 const Home = () => {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
-
-  const fetchCategories = async () => {
-    let res = await fetch("/categories.json");
-
-    let data = await res.json();
-
-    setCategories(data);
-  }
-
-  const fetchProducts = async () => {
-    let res = await fetch("/products.json");
-
-    let data = await res.json();
-
-    setProducts(data);
-  }
-
-  useEffect(() => {
-    fetchCategories();
-    fetchProducts();
-  }, []);
+  const categories = useSelector(state => state.product.categories)
 
   const setActiveLink = ({isActive}) => isActive ? "tab__item tab__item-active" : "tab__item";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { addProductToCart } from '../../store/features/product/productSlice';
+import { addProductToCart, fetchProductsById } from '@/store/features/product/productSlice';
 
 const Product = () => {
     const dispatch = useDispatch();
@@ -9,25 +9,12 @@ const Product = () => {
 
     const { productId } = useParams();
 
-    const [product, setProduct] = useState(null)
     const [count, setCount] = useState(1);
 
-    const fetchProduct = async () => {
-        try {
-            let res = await fetch("/products.json");
-
-            let data = await res.json();
-
-            let filteredData = data.find(item => item.id === productId);
-
-            setProduct(filteredData);
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    const {product, isLoading} = useSelector(state => state.product)
 
     useEffect(() => {
-        fetchProduct();
+        dispatch(fetchProductsById(productId));
     }, [productId])
 
     const incrementCount = () => {

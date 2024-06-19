@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '@/store/features/product/productSlice';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
-
+    const dispatch = useDispatch();
     const { categoryId } = useParams();
 
-    const fetchProducts = async () => {
-        let res = await fetch("/products.json");
+    const {products} = useSelector(state => state.product)
 
-        let data = await res.json();
-
-        setProducts(data);
-    }
-
-    useEffect(() => {
-        fetchProducts()
-    }, [])
 
     const filterProducts = categoryId ? products.filter(item => item.categoryId === categoryId) : products;
 
