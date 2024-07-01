@@ -55,6 +55,13 @@ const App = () => {
     setSearch(e.target.value);
   };
 
+  const handleRemoveTag = (tagId) => {
+    setNotes(notes.map(note => {
+      note.tags = note.tags.filter(item => item.id !== tagId)
+      return note
+    }))
+  }
+
   useEffect(() => {
     setFilteredNotes(
       notes.filter((item) => item.tags.find((tag) => tag.name.includes(search)))
@@ -126,6 +133,7 @@ const App = () => {
                 removeNote={() => handleRemoveNote(item.id)}
                 createTag={handleCreateTag}
                 editNote={handleEditNote}
+                removeTag= {handleRemoveTag}
               />
             ))}
         </div>

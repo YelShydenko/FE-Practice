@@ -2,7 +2,7 @@ import React, { memo, useState } from "react";
 import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const NoteItem = ({ index, note, removeNote, editNote, createTag }) => {
+const NoteItem = ({ index, note, removeNote, editNote, createTag, removeTag }) => {
   const [noteLabel, setNoteLabel] = useState(note.label);
   const [isEdit, setIsEdit] = useState(false);
   const [isTagShow, setIsTagShow] = useState(true);
@@ -77,7 +77,11 @@ const NoteItem = ({ index, note, removeNote, editNote, createTag }) => {
           <ul className="tag">
             {note.tags &&
               note.tags.map((item) => (
-                <li key={item.id} className="tag__item">
+                <li
+                  key={item.id}
+                  className="tag__item"
+                  onDoubleClick={() => removeTag(item.id)}
+                >
                   {item.name}
                 </li>
               ))}
