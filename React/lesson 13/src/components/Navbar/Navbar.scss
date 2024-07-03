@@ -3,7 +3,11 @@
 
 .navbar {
     background-color: nav.$nav-bg-color;
-
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    
     .content {
         display: flex;
         justify-content: space-between;
@@ -17,6 +21,7 @@
         gap: 42px;
 
         &__item {
+            text-decoration: none;
             color: nav.$nav-item-color;
             font-weight: 500;
             font-size: nav.$nav-font-size;
