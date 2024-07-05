@@ -85,12 +85,15 @@
           }
         }
         .purchase__subscription {
+          margin: 50px;
           max-width: 350px;
           display: flex;
           flex-direction: column;
           gap: 18px;
           .first__radio {
             padding: 0 18px;
+            display: flex;
+            gap: 20px;
           }
           .second__radio {
             border: 1px solid #e6e6e6;
@@ -102,6 +105,7 @@
             .radio__delivery {
               display: flex;
               align-items: center;
+              gap: 20px;
             }
             p {
               color: #656565;
@@ -112,6 +116,21 @@
             }
           }
         }
+      }
+    }
+    &-right__description {
+      border: 1px solid #e6e6e6;
+      border-radius: 7px;
+      padding: 22px;
+      p {
+        font-size: 16px;
+        span {
+          font-weight: 500;
+        }
+      }
+      &-specific {
+        display: flex;
+        gap: 10px;
       }
     }
   }

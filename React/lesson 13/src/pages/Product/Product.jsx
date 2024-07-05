@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.scss";
 import Button from "../../components/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { addProductToCart, fetchProductsById } from "../../store/futures/productSlice";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Product = () => {
+  const dispatch = useDispatch();
+  const { productId } = useParams();
+  const { product } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    // console.log(productId);
+    dispatch(fetchProductsById(productId));
+    // console.log(product);
+  }, [productId]);
+
   const [quantityValue, setQuantityValue] = useState(1);
 
   const increment = () => {
     setQuantityValue(quantityValue + 1);
   };
+
   const decrement = () => {
     if (quantityValue > 1) {
       setQuantityValue(quantityValue - 1);
     }
   };
+
+  const addToCart = () => {
+    dispatch(addProductToCart({...product, quantityValue}))
+  }
   return (
     <div className="product__page">
       <div className="container">
         <div className="product__content">
           <div className="product__content-left">
             <div className="product__content-left__image">
-              <img src=".././images/products/product-1.png" alt="" />
+              <img src={`../${product?.image}`} alt={product?.title} />
             </div>
             <div className="product__content-left__description">
               <p>
@@ -30,10 +49,10 @@ const Product = () => {
             </div>
           </div>
           <div className="product__content-right">
-            <h2>Spiced Mint Candleaf®</h2>
+            <h2>{product?.title}</h2>
             <div className="product__content-right__info">
               <div className="price__quantity">
-                <span className="price">$ 9.99</span>
+                <span className="price">$ {product?.price}</span>
                 <div className="quantity">
                   <p>Quantity</p>
                   <div className="quantity__value">
@@ -45,30 +64,27 @@ const Product = () => {
               </div>
               <div className="purchase__subscription">
                 <div className="first__radio">
-                  <label htmlFor="radio__one">
-                    <input
-                      className="radio"
-                      type="radio"
-                      id="radio__one"
-                      name="radio__one"
-                      value="one__time"
-                      required
-                    />
-                    One time purchase
-                  </label>
+                  <input
+                    className="radio"
+                    type="radio"
+                    id="radio__one"
+                    name="radio__one"
+                    value="one__time"
+                    required
+                  />
+                  <label htmlFor="radio__one">One time purchase</label>
                 </div>
                 <div className="second__radio">
                   <div className="radio__delivery">
+                    <input
+                      className="radio"
+                      type="radio"
+                      id="radio__two"
+                      name="radio__two"
+                      value="subscription"
+                      required
+                    />
                     <label htmlFor="radio__two">
-                      <input
-                        className="radio"
-                        type="radio"
-                        id="radio__two"
-                        name="radio__two"
-                        value="subscription"
-                        checked
-                        required
-                      />
                       Subscribe and delivery every
                     </label>
                     <select name="" id="">
@@ -85,8 +101,8 @@ const Product = () => {
                     <span> See details</span>
                   </p>
                 </div>
-                <Button className="btn-default-size btn-default-color">
-                  + Add to cart
+                <Button className="btn-default-size btn-default-color" onClick={()=>addToCart(product)} >
+                  <MdOutlineShoppingCart /> + Add to cart
                 </Button>
               </div>
             </div>
@@ -101,7 +117,7 @@ const Product = () => {
               </p>
               <div className="product__content-right__description-specific">
                 <p>
-                  <span>Burning Time: 70-75 hours</span> 70-75 hours
+                  <span>Burning Time:</span> 70-75 hours
                 </p>
                 <p>
                   <span>Dimension:</span> 10cm x 5cm
