@@ -1,0 +1,24 @@
+.todo {
+    max-width: 576px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        
+        form {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+    }
+
+    &__content {
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

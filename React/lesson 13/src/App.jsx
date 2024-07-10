@@ -8,13 +8,16 @@ import Layout from "@/components/Layout/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/store/futures/productSlice";
 import Authentication from "@/pages/Authentication/Authentication";
+import { getProbuctFromLocalStorage } from "./store/futures/productSlice";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(getProbuctFromLocalStorage());
   }, []);
+
 
   return (
     <>

@@ -35,23 +35,54 @@ export const ProductsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    getProbuctFromLocalStorage: (state) => {
+      let cartStorage = JSON.parse(localStorage.getItem("cart"));
+
+      if (cartStorage) {
+        state.cart = [...cartStorage];
+      } else {
+        state.cart = [];
+        localStorage.setItem("cart", JSON.stringify([state.cart]));
+      }
+    },
     addProductToCart: (state, { payload }) => {
       let foundProduct = state.cart.find((item) => item.id === payload.id);
 
-      if (foundProduct) {
-        state.cart = state.cart.map((item) => {
-          if (item.id === payload.id) {
-            item.quantityValue = payload.quantityValue;
-          }
-          return item;
-        });
-      } else {
-        state.cart.push(payload);
+      if (!foundProduct) {
+        state.cart.push({ ...payload, count: 1 });
       }
+      localStorage.setItem("cart", JSON.stringify([state.cart]));
     },
-    // removeProductFromCart: (state, { payload }) = {
-      
-    // }
+    incrementProduct: (state, { payload }) => {
+      state.cart = state.cart.map((item) => {
+        if (item.id === payload) {
+          item.count += 1;
+        }
+
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify([state.cart]));
+    },
+    decrementProduct: (state, { payload }) => {
+      state.cart = state.cart
+        .map((item) => {
+          if (item.id === payload) {
+            item.count -= 1;
+
+            if (item.count === 0) {
+              return null;
+            }
+          }
+
+          return item;
+        })
+        .filter((item) => item);
+      localStorage.setItem("cart", JSON.stringify([state.cart]));
+    },
+    removeProductFromCart: (state, { payload }) => {
+      state.cart = state.cart.filter((item) => item.id !== payload);
+      localStorage.setItem("cart", JSON.stringify([state.cart]));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -80,6 +111,12 @@ export const ProductsSlice = createSlice({
   },
 });
 
-export const { addProductToCart } = ProductsSlice.actions;
+export const {
+  addProductToCart,
+  removeProductFromCart,
+  incrementProduct,
+  decrementProduct,
+  getProbuctFromLocalStorage,
+} = ProductsSlice.actions;
 
 export default ProductsSlice.reducer;

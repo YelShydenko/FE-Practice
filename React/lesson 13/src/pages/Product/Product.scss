@@ -1,137 +1,59 @@
-.product__page {
-  padding: 122px 0 574px;
-  .product__content {
-    display: flex;
-    gap: 31px;
-    &-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 17px;
-      max-width: 540px;
-      &__image {
-        background-color: #f7f8fa;
-        padding: 32px 6px 5px;
+.product {
+    padding: 64px 0;
+
+    &__details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    &__image {
+        background: #F7F8FA;
 
         img {
-          width: 528px;
+            width: 100%;
+            display: block;
+            max-height: 540px;
+            height: 100%;
+            object-fit: cover;
         }
-      }
-      &__description {
+    }
+
+    &__info {
         display: flex;
         flex-direction: column;
-        gap: 25px;
-        font-size: 22px;
-        font-family: "Poppins";
-        font-weight: 500;
-
-        p:last-child {
-          color: #56b280;
-        }
-      }
+        gap: 32px;
     }
-    &-right {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      h2 {
+
+    &__title {
         font-size: 26px;
         font-weight: 500;
-        font-family: "Poppins";
-      }
-      &__info {
-        display: flex;
-        justify-content: space-between;
-        .price__quantity {
-          display: flex;
-          flex-direction: column;
-          gap: 27px;
-          .price {
-            color: #56b280;
-            font-weight: 600;
-            font-size: 26px;
-          }
-          .quantity {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            p {
-              font-family: "Roboto";
-              font-size: 18px;
-            }
-            &__value {
-              border: 1px solid #56b280;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              button {
-                padding: 5px 10px;
-                border: none;
-                background: none;
-                color: #a7a7a7;
-                cursor: pointer;
-                &:first-child {
-                  color: #56b280;
-                }
-              }
-              span {
-                font-family: "Roboto";
-                font-size: 18px;
-                font-weight: 400;
-                color: #1d252c;
-              }
-            }
-          }
-        }
-        .purchase__subscription {
-          margin: 50px;
-          max-width: 350px;
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-          .first__radio {
-            padding: 0 18px;
-            display: flex;
-            gap: 20px;
-          }
-          .second__radio {
-            border: 1px solid #e6e6e6;
-            border-radius: 7px;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            .radio__delivery {
-              display: flex;
-              align-items: center;
-              gap: 20px;
-            }
-            p {
-              color: #656565;
-              font-size: 16px;
-              span {
-                color: #56b280;
-              }
-            }
-          }
-        }
-      }
+        color: #272727;
     }
-    &-right__description {
-      border: 1px solid #e6e6e6;
-      border-radius: 7px;
-      padding: 22px;
-      p {
-        font-size: 16px;
+
+    &__price {
+        font-size: 26px;
+        font-weight: 600;
+        color: #56B280;
+    }
+
+    &__actions {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 16px;
+    }
+
+
+    &__banner {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 500;
+
         span {
-          font-weight: 500;
+            font-size: 20px;
+            color: #56B280;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
         }
-      }
-      &-specific {
-        display: flex;
-        gap: 10px;
-      }
     }
-  }
 }

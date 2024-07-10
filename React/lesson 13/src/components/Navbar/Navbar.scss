@@ -1,40 +1,54 @@
-
 @use "@/assets/styles/variables.scss" as nav;
 
 .navbar {
-    background-color: nav.$nav-bg-color;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-    border-bottom: 0.5px solid rgba(86, 178, 128, 0.2);
-    
-    .content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px;
+  background-color: nav.$nav-bg-color;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  border-bottom: 0.5px solid rgba(86, 178, 128, 0.2);
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+  }
+
+  &-list {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+
+    &__item {
+      text-decoration: none;
+      color: nav.$nav-item-color;
+      font-weight: 500;
+      font-size: nav.$nav-font-size;
+
+      &-active {
+        color: nav.$nav-item-active-color;
+      }
     }
 
-    &-list {
-        display: flex;
-        align-items: center;
-        gap: 42px;
-
-        &__item {
-            text-decoration: none;
-            color: nav.$nav-item-color;
-            font-weight: 500;
-            font-size: nav.$nav-font-size;
-
-            &-active {
-                color: nav.$nav-item-active-color;
-            }
-        }
-
-        &__icon {
-            color: nav.$nav-icon-color;
-            font-size: nav.$nav-icon-size;
-        }
+    &__icon {
+      color: nav.$nav-icon-color;
+      font-size: nav.$nav-icon-size;
+      position: relative;
     }
+  }
+}
+
+.count {
+    position: absolute;
+    top: 18px;
+    background-color: nav.$color-light-2;
+    border-radius: 50%;
+    display: block;
+    height: 12px;
+    width: 12px;
+    font-size: 10px;
+    text-align: center;
+    color: white;
+
 }
