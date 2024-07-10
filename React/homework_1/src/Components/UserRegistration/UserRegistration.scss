@@ -1,0 +1,47 @@
+body {
+  background-color: #f4d03f;
+  background-image: linear-gradient(132deg, #f4d03f 0%, #16a085 100%);
+
+  height: 100vh;
+}
+.user__registration {
+  background-color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 100px auto;
+  max-width: 500px;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  .user__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    .form__input {
+      padding: 10px;
+      border-radius: 8px;
+
+      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+      border: none;
+    }
+    .input-error{
+      color: red;
+    }
+    .btn{
+      padding: 10px 15px;
+      font-size: 18px;
+      background-color: #f4d03f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      &:hover{
+         background-color: #16a085;
+         transition: 0.4s;
+         font-size: 20px;
+      }
+    }
+  }
+}
