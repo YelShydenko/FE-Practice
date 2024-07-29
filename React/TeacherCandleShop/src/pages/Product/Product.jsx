@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { fetchProductsById, addProductToCart, removeProductFromCart , decrementProduct, incrementProduct} from '@/store/futures/productSlice';
+import { fetchProductsById, addProductToCart, removeProductFromCart, decrementProduct, incrementProduct } from '@/store/futures/productSlice';
 import Button from '@/components/Button/Button';
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { MdOutlineShoppingCart } from 'react-icons/md';
+import { HiMiniHeart } from "react-icons/hi2";
+import { setFavourite } from '../../store/futures/productSlice';
+
 import "./Product.scss"
 
 const Product = () => {
   const dispatch = useDispatch();
-  const { product, cart, loading } = useSelector(state => state.products);
+  const { product, cart, favourite,  loading } = useSelector(state => state.products);
 
   const [count, setCount] = useState(0);
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const { productId } = useParams();
 
@@ -19,26 +23,27 @@ const Product = () => {
     dispatch(fetchProductsById(productId));
   }, [productId])
 
+  useEffect(() => {
+    let cartFound = cart.find(item => item.id === product?.id);
 
-  useEffect(()=>{
-    let cartFound = cart.find(item => item.id === product.id);
-
-    if(cartFound){
+    if (cartFound) {
       setCount(cartFound.count)
-    }else {
+    } else {
       setCount(0)
     }
-  },[cart])
+  }, [cart, product])
 
 
-  const removeCart = () => {
-    dispatch(removeProductFromCart(product.id));
+  useEffect(()=>{
+    let favouriteFound = favourite.find(item => item === product?.id);
 
-    setCount(1)
-  }
+    if(favouriteFound){
+      setIsFavourite(true)
+    }else {
+      setIsFavourite(false)
+    }
+  },[favourite, product])
 
-
-  console.log(count)
   return (
     <div className='product'>
       <div className="container">
@@ -46,6 +51,8 @@ const Product = () => {
           <div className='product__details'>
             <div className='product__image'>
               <img src={`../${product?.image}`} alt={product?.title} />
+
+              <HiMiniHeart className={`product__favourite ${isFavourite ? "product__favourite-active" : ""}`} onClick={() => dispatch(setFavourite(product?.id))}/>
             </div>
             <div className='product__info'>
               <div>
@@ -63,11 +70,11 @@ const Product = () => {
                     </div>
                   )
                 }
-               
+
                 {
                   count > 0
-                  ? <Button className='btn-default-size btn-danger-color' onClick={removeCart}>Remove from cart</Button> 
-                  : <Button className='btn-default-size btn-default-color btn-icon' onClick={() => dispatch(addProductToCart(product))}> <MdOutlineShoppingCart size={16} /> + Add to cart</Button>
+                    ? <Button className='btn-default-size btn-danger-color' onClick={() => dispatch(removeProductFromCart(product?.id))}>Remove from cart</Button>
+                    : <Button className='btn-default-size btn-default-color btn-icon' onClick={() => dispatch(addProductToCart(product))}> <MdOutlineShoppingCart size={16} /> + Add to cart</Button>
                 }
               </div>
 

@@ -9,6 +9,7 @@
 
     &__image {
         background: #F7F8FA;
+        position: relative;
 
         img {
             width: 100%;
@@ -43,26 +44,6 @@
         gap: 16px;
     }
 
-    .quantity {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 4px;
-        border: 1px solid #56B280;
-        max-width: 105px;
-        border-radius: 4px;
-
-        &__icon {
-            display: block;
-        }
-
-        button {
-            padding: 10px;
-            background: none;
-            border: none;
-        }
-    }
-
     &__banner {
         text-align: center;
         font-size: 22px;
@@ -73,6 +54,20 @@
             color: #56B280;
             font-family: 'Roboto', sans-serif;
             font-weight: bold;
+        }
+    }
+
+    &__favourite {
+        color: #ccc;
+        stroke-width: 1px;
+        
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 48px;
+
+        &-active {
+            color: orange;
         }
     }
 }

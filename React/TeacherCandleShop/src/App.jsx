@@ -7,15 +7,18 @@ import ProductsPage from '@/pages/Products/Products'
 import CartPage from '@/pages/Cart/Cart'
 import Layout from '@/components/Layout/Layout'
 import { useDispatch } from 'react-redux'
-import { fetchProducts } from '@/store/futures/productSlice'
+import { fetchProducts, getProductFromLocalStorage } from '@/store/futures/productSlice'
 import Authentication from '@/pages/Authentication/Authentication'
 import Todo from './pages/Todo/Todo'
+import { getFavouriteFromLocalStorage } from './store/futures/productSlice'
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch(fetchProducts())
+    dispatch(fetchProducts());
+    dispatch(getProductFromLocalStorage());
+    dispatch(getFavouriteFromLocalStorage());
   },[])
 
   
