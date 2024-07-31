@@ -24,8 +24,26 @@ export const fetchProductsById = createAsyncThunk(
 )
 
 
+export const addProduct = createAsyncThunk(
+    "products/addProduct",
+    async (productData) => {
+        const res = await fetch(`http://localhost:3000/products/add`, {
+            method:"POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productData)
+        });
+
+        const data = await res.json();
+
+        return data;
+    }
+)
+
 const initialState = {
     products: [],
+    filteredProducts: [],
     product: null,
     cart: [],
     favourite: [],
@@ -112,6 +130,22 @@ export const ProductsSlice = createSlice({
             }
 
             localStorage.setItem("favourite", JSON.stringify(state.favourite))
+        },
+        sortBy: (state, {payload}) => {
+            let data = state.filteredProducts.length > 0 ? state.filteredProducts : state.products
+
+            if(payload.value === "low-to-high"){
+                state.filteredProducts = data.sort((a, b) => a.price - b.price)
+            }else if (payload.value === "high-to-low"){
+                state.filteredProducts = data.sort((a, b) => b.price - a.price)
+            }else {
+                state.filteredProducts = data.sort((a, b) => a.id - b.id);
+            }
+        },
+        filterByPrice: (state, {payload}) => {
+            const {minPrice, maxPrice} = payload;
+
+            state.filteredProducts = state.products.filter(item => item.price >= minPrice && item.price <= maxPrice)
         }
     },
     extraReducers: builder => {
@@ -138,6 +172,17 @@ export const ProductsSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message;
             })
+            .addCase(addProduct.pending, state => {
+                state.loading = true;
+            })
+            .addCase(addProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products.push(action.payload);
+            })
+            .addCase(addProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
     }
 })
 
@@ -148,7 +193,9 @@ export const {
     decrementProduct, 
     getProductFromLocalStorage, 
     setFavourite, 
-    getFavouriteFromLocalStorage 
+    getFavouriteFromLocalStorage,
+    sortBy,
+    filterByPrice
 } = ProductsSlice.actions
 
 export default ProductsSlice.reducer

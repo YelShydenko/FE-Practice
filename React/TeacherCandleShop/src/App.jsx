@@ -9,8 +9,9 @@ import Layout from '@/components/Layout/Layout'
 import { useDispatch } from 'react-redux'
 import { fetchProducts, getProductFromLocalStorage } from '@/store/futures/productSlice'
 import Authentication from '@/pages/Authentication/Authentication'
-import Todo from './pages/Todo/Todo'
-import { getFavouriteFromLocalStorage } from './store/futures/productSlice'
+import Todo from '@/pages/Todo/Todo'
+import { getFavouriteFromLocalStorage } from '@/store/futures/productSlice'
+import Admin from '@/pages/Admin/Admin'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
               <Route path='cart' element={<CartPage />}/>
               <Route path='authentication' element={<Authentication />}/>
               <Route path='todo' element={<Todo />}/>
+              <Route path='admin' element={<Admin />}/>
           </Route>
       </Routes>
     </>

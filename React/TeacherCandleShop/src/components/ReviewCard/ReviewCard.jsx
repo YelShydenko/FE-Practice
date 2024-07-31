@@ -3,7 +3,7 @@ import React from 'react'
 const ReviewCard = () => {
   return (
     <div className='review-card'>
-            1fff
+            1
     </div>
   )
 }
