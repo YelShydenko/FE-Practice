@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const fetchProducts = createAsyncThunk(
     "products/fetchProducts",
     async () => {
-        const res = await fetch("http://localhost:3000/products");
+        const res = await fetch(`${import.meta.env.APP_API_URL}/products`);
 
         const data = await res.json();
 
@@ -15,7 +15,7 @@ export const fetchProducts = createAsyncThunk(
 export const fetchProductsById = createAsyncThunk(
     "products/fetchProductsById",
     async (productId) => {
-        const res = await fetch(`http://localhost:3000/products/${productId}`);
+        const res = await fetch(`${import.meta.env.APP_API_URL}/products/${productId}`);
 
         const data = await res.json();
 
@@ -26,8 +26,8 @@ export const fetchProductsById = createAsyncThunk(
 
 export const addProduct = createAsyncThunk(
     "products/addProduct",
-    async (productData) => {
-        const res = await fetch(`http://localhost:3000/products/add`, {
+    async productData => {
+        const res = await fetch(`${import.meta.env.APP_API_URL}/products/add`, {
             method:"POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -40,6 +40,42 @@ export const addProduct = createAsyncThunk(
         return data;
     }
 )
+
+export const removeProduct = createAsyncThunk(
+    "products/removeProduct",
+    async productId => {
+        const res = await fetch(`${import.meta.env.APP_API_URL}/products/remove/${productId}`, {
+            method:"DELETE"
+        });
+
+        const data = await res.json();
+
+        return data;
+    }
+)
+
+export const editProduct = createAsyncThunk(
+    "products/editProduct",
+    async (product) => {
+        const res = await fetch(`${import.meta.env.APP_API_URL}/products/edit/${product.id}`, {
+            method:"PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        });
+
+        const data = await res.json();
+
+        return data;
+    }
+)
+
+
+// /products/edit/1
+
+
+
 
 const initialState = {
     products: [],
@@ -183,8 +219,37 @@ export const ProductsSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message;
             })
+            .addCase(removeProduct.pending, state => {
+                state.loading = true;
+            })
+            .addCase(removeProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = state.products.filter(item => item.id !== action.payload);
+            })
+            .addCase(removeProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            .addCase(editProduct.pending, state => {
+                state.loading = true;
+            })
+            .addCase(editProduct.fulfilled, (state, action) => {
+                state.loading = false;
+                state.products = state.products.map(item => {
+                    if(item.id === action.payload.id){
+                        item = action.payload
+                    }
+
+                    return item;
+                });
+            })
+            .addCase(editProduct.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
     }
 })
+
 
 export const { 
     addProductToCart, 

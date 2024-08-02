@@ -12,6 +12,7 @@ import Authentication from '@/pages/Authentication/Authentication'
 import Todo from '@/pages/Todo/Todo'
 import { getFavouriteFromLocalStorage } from '@/store/futures/productSlice'
 import Admin from '@/pages/Admin/Admin'
+import ProductEdit from './pages/ProductEdit/ProductEdit'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,8 @@ const App = () => {
               <Route path='cart' element={<CartPage />}/>
               <Route path='authentication' element={<Authentication />}/>
               <Route path='todo' element={<Todo />}/>
-              <Route path='admin' element={<Admin />}/>
+              <Route path='admin/product/add' element={<Admin />}/>
+              <Route path='admin/product/edit/:productId' element={<ProductEdit />}/>
           </Route>
       </Routes>
     </>

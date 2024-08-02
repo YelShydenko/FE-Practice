@@ -17,7 +17,7 @@ const Products = () => {
                     <div className="content__body">
                         <div className="products-list">
                             {
-                                products && products.map(product => <ProductCard key={product.id} product={product} />)
+                                products && products.slice(0, 8).map(product => <ProductCard key={product.id} product={product} />)
                             }
                         </div>
                     </div>
